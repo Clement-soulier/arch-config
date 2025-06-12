@@ -54,7 +54,7 @@ before running the installation script please make sure have those packets insta
     <li>google-chrome</li>
 </ul>
 
-<h1>Files to complete<h1>
+<h1>Files to complete</h1>
 Before running the installation script please complete theses files for all features to work.
 <ul>
     <li>
