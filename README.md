@@ -4,7 +4,7 @@ A simple Arch Linux configuration using Hyprland. I'm using this repo to easely 
 <h1>Dependencies</h1>
 before running the installation script please make sure have those packets installed
 
-<h2>Pacman packages<h2>
+<h2>Pacman packages</h2>
 <ul>
     <li>hyprland</li>
     <li>xdg-desktop-portal-hyprland</li>
