@@ -1,0 +1,5 @@
+program_options:
+  tray: false
+  notify: true
+  automount: true
+  file_manager: ranger

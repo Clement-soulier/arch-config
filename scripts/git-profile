@@ -1,0 +1,32 @@
+#!/bin/bash
+
+declare -A GIT_PROFILES
+# complete this part with this line format
+#GIT_PROFILES["name"]="name|email|token_name_in_.github_tokens.yml"
+#GIT_PROFILES["name"]="name|email|token_name_in_.github_tokens.yml"
+
+SELECTED=$(printf "%s\n" "${!GIT_PROFILES[@]}" | fzf --prompt="Please choose a Git profile: ")
+
+if [ -z "$SELECTED" ]; then
+    echo "Operation canceled."
+    exit 1
+fi
+
+IFS="|" read -r NAME EMAIL TOKEN_KEY <<< "${GIT_PROFILES[$SELECTED]}"
+
+git config --global user.name "$NAME"
+git config --global user.email "$EMAIL"
+
+TOKEN=$(ansible-vault view ~/.github_tokens.yml | yq ".github_tokens.${TOKEN_KEY}")
+
+if [ -z "$TOKEN" ]; then
+    echo "Error : Unable to find a token named: $TOKEN_KEY"
+    exit 1
+fi
+
+git config --global credential.helper "!f() { echo username=$EMAIL; echo password=$TOKEN; }; f"
+
+echo "Profil '$SELECTED' selected :"
+echo "Nom   : $NAME"
+echo "Email : $EMAIL"
+echo "Github token applied with a personalized helper"

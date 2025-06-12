@@ -1,0 +1,4 @@
+# complete this file with your GitHub tokens
+# Then encrypt this file with ansible vault
+github_tokens:
+  # token_name: "your_github_token"
