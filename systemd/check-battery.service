@@ -1,0 +1,5 @@
+[Unit]
+Description=Vérification du niveau de batterie
+
+[Service]
+ExecStart=/home/$USER/.local/bin/check-battery.sh

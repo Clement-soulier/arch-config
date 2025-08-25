@@ -53,8 +53,26 @@ sudo -u "$SUDO_USER" cp -r "$USER_HOME/arch-config/.config/"* "$USER_HOME/.confi
 sudo -u "$SUDO_USER" cp "$USER_HOME/arch-config/.github_tokens.yml" "$USER_HOME/"
 sudo -u "$SUDO_USER" cp "$USER_HOME/arch-config/scripts/git-profile" "/usr/local/bin/"
 sudo -u "$SUDO_USER" cp "$USER_HOME/arch-config/scripts/screen-zone.sh" "$USER_HOME/.config/scripts/"
+sudo -u "$SUDO_USER" cp "USER_HOME/arch-config/scripts/lock_and_suspend.sh" "$USER_HOME/.local/bin"
+sudo -u "$SUDO_USER" cp "USER_HOME/arch-config/scripts/power_menu.sh" "$USER_HOME/.local/bin"
+sudo -u "$SUDO_USER" cp "USER_HOME/arch-config/scripts/power_mode_status.sh" "$USER_HOME/.local/bin"
+sudo -u "$SUDO_USER" cp "USER_HOME/arch-config/scripts/power_performance.sh" "$USER_HOME/.local/bin"
+sudo -u "$SUDO_USER" cp "USER_HOME/arch-config/scripts/power_saver.sh" "$USER_HOME/.local/bin"
+sudo -u "$SUDO_USER" cp "USER_HOME/arch-config/scripts/check-battery.sh" "$USER_HOME/.local/bin"
+sudo -u "$SUDO_USER" cp "USER_HOME/arch-config/systemd/check-battery.service" "$USER_HOME/.config/systemd/user/"
+sudo -u "$SUDO_USER" cp "USER_HOME/arch-config/systemd/check-battery.timer" "$USER_HOME/.config/systemd/user/"
 
 chmod +x /usr/local/bin/git-profile
 chmod +x "$USER_HOME/.config/scripts/screen-zone.sh"
+chmod +x "$USER_HOME/.local/bin/lock_and_suspend.sh"
+chmod +x "$USER_HOME/.local/bin/power_menu.sh"
+chmod +x "$USER_HOME/.local/bin/power_mode_status.sh"
+chmod +x "$USER_HOME/.local/bin/power_performance.sh"
+chmod +x "$USER_HOME/.local/bin/power_saver.sh"
+chmod +x "$USER_HOME/.local/bin/check-battery.sh"
+systemctl --user enable --now check-battery.timer
+
+fmtutil-user --byfmt=pdflatex
+
 
 echo "Installation complete."

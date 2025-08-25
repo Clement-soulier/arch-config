@@ -44,6 +44,17 @@ before running the installation script please make sure have those packets insta
     <li>drawing</li>
     <li>ttf-jetbrains-mono-nerd</li>
     <li>ansible</li>
+    <li>powerprofilesctl</li>
+    <li>cpupower</li>
+    <li>qualculate-gtk</li>
+    <li>zathura</li> 
+    <li>zathura-pdf-mupdf</li>
+    <li>texlive-basic</li>
+    <li>texlive-latex</li>
+    <li>texlive-latexrecommanded</li>
+    <li>texlive-binextra</li>
+    <li>inotify-tools</li>
+    <li>rclone</li>
 </ul>
 
 <h2>yay packages</h2>

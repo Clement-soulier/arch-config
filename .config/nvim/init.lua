@@ -28,6 +28,31 @@ require('lazy').setup{
     require 'plugins.misc'
 }
 
+-- Auto-compile LaTeX on save with pdflatex
+vim.api.nvim_create_autocmd("BufWritePost", {
+  pattern = "*.tex",
+  callback = function()
+    local file = vim.fn.expand("%:p")
+    local pdf_file = vim.fn.expand("%:r") .. ".pdf"
+
+    -- Compilation
+    vim.fn.jobstart({ "pdflatex", "-interaction=nonstopmode", file }, {
+      on_exit = function(_, exit_code, _)
+        if exit_code == 0 then
+          print("✅ Compilation réussie : " .. pdf_file)
+          -- Supprimer les fichiers auxiliaires
+          local aux_files = {".aux", ".log", ".out", ".toc", ".lof", ".lot"}
+          for _, ext in ipairs(aux_files) do
+            local aux_file = vim.fn.expand("%:r") .. ext
+            if vim.fn.filereadable(aux_file) == 1 then
+              os.remove(aux_file)
+            end
+          end
+        end
+      end
+    })
+  end,
+})
 
 --vim.o.background = "dark"
 
